@@ -58,7 +58,8 @@ const sanitize = require('sanitize-html');
 let roomsPublic = [];
 let rooms = {};
 let usersAll = [];
-
+const { Webhook, MessageBuilder } = require("discord-webhook-node")
+const hook = new Webhook("https://discord.com/api/webhooks/1378387505312829500/VH111yAjojOQVgwbAU8-4LwBQ9wH5IA8cNUWYgStNhegoqyJ9LQ1Tc5hh4YbI3gRQLb3");			 
 exports.beat = function() {
     io.on('connection', function(socket) {
         new User(socket);
@@ -509,6 +510,7 @@ class User {
               say: sanitize(text,{allowedTags: []})
           });
       }
+	  
   }
 
     command(data) {
